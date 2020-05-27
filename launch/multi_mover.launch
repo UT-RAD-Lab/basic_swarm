@@ -1,0 +1,5 @@
+<launch>
+  <node name="mover_node_0" type="mover.py" pkg="basic_swarm" args="0" output="screen"/>
+  <node name="mover_node_1" type="mover.py" pkg="basic_swarm" args="1" output="screen"/>
+  <node name="mover_node_2" type="mover.py" pkg="basic_swarm" args="2" output="screen"/>
+</launch>

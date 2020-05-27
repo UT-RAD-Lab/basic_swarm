@@ -1,0 +1,26 @@
+<launch>
+  <!-- ARGUMENTS -->
+  <arg name="map_file"          default="$(find basic_swarm)/maps/map_clean.yaml"/>
+  <arg name="multi_robot_name"  default="" doc="also known as namespace or tf prefix"/>
+  <arg name="scan_topic"        default="scan"/>
+  <arg name="initial_pose_x"    default="0.0"/>
+  <arg name="initial_pose_y"    default="0.0"/>
+  <arg name="initial_pose_a"    default="0.0"/>
+  <arg name="model"             default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="bringup_required"  default=  "false" doc="Specifies whether or not the turtlebot3_bringup remote node is required."/>
+
+  <!-- Bringup -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" if="$(arg bringup_required)" required="true" output="screen">
+    <arg name="model" value="$(arg model)"/>
+    <arg name="multi_robot_name" value="$(arg multi_robot_name)"/>
+  </include>
+
+  <!-- LOADING MAP -->
+
+
+  <!-- AMCL -->
+  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+    <arg name="multi_robot_name"  value="$(arg multi_robot_name)"/>
+  </include>
+
+</launch>
