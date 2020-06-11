@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.0.2)
-=======
-cmake_minimum_required(VERSION 2.8.3)
->>>>>>> e082f7e63e2546f05c668e6fc88d047852fda0f9
 project(basic_swarm)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
