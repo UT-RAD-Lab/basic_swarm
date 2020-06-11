@@ -1,0 +1,4 @@
+<launch>
+  <arg name="robot_number" doc="The sequential number of the robot."/>
+  <node name="mover_node_$(arg robot_number)" type="mover.py" pkg="basic_swarm" args="$(arg robot_number)" output="screen"/>
+</launch>

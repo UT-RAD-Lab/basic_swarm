@@ -1,0 +1,5 @@
+<launch>
+  <arg name="test_argument" doc="Demo argument to test this out"/>
+  <arg name="color"/>
+  <node name="arg_node" type="arg_tester.py" pkg="basic_swarm" args="$(arg test_argument) $(arg color)" output="screen"/>
+</launch>

@@ -1,5 +1,4 @@
 <launch>
-<<<<<<< HEAD
 
   <!-- Turtlebot Names -->
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
@@ -24,6 +23,8 @@
   <arg name="third_tb3_y_pos" default=" 3.0"/>
   <arg name="third_tb3_z_pos" default=" 0.0"/>
   <arg name="third_tb3_yaw"   default=" 0.0"/>
+
+  <arg name="open_rviz"       default="true"/>
 
   <!-- Launch Gazebo World -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">

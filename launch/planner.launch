@@ -1,0 +1,3 @@
+<launch>
+  <node name="planner_node" type="planner.py" pkg="basic_swarm" output="screen"/>
+</launch>
