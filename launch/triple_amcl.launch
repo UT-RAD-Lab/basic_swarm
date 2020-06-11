@@ -1,0 +1,71 @@
+<launch>
+
+  <arg name="first_tb3"  default="tb3_0"/>
+  <arg name="second_tb3" default="tb3_1"/>
+  <arg name="third_tb3"  default="tb3_2"/>
+
+  <!-- TBot 1 initial pose -->
+  <arg name="first_tb3_x_pos" default="-7.0"/>
+  <arg name="first_tb3_y_pos" default="-1.0"/>
+  <arg name="first_tb3_z_pos" default=" 0.0"/>
+  <arg name="first_tb3_yaw"   default=" 1.57"/>
+
+  <!-- TBot 2 initial pose -->
+  <arg name="second_tb3_x_pos" default=" 7.0"/>
+  <arg name="second_tb3_y_pos" default="-1.0"/>
+  <arg name="second_tb3_z_pos" default=" 0.0"/>
+  <arg name="second_tb3_yaw"   default=" 1.57"/>
+
+  <!-- TBot 3 -->
+  <arg name="third_tb3_x_pos" default=" 0.5"/>
+  <arg name="third_tb3_y_pos" default=" 3.0"/>
+  <arg name="third_tb3_z_pos" default=" 0.0"/>
+  <arg name="third_tb3_yaw"   default=" 0.0"/>
+
+  <arg name="open_rviz"       default="true"/>
+
+  <arg name="map_name"        default="map_clean"/>
+
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find basic_swarm)/maps/$(arg map_name).yaml"/>
+
+  <!-- Launch AMCL -->
+  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+    <arg name="multi_robot_name"  value="$(arg first_tb3)"/>
+    <arg name="initial_pose_x"    value="$(arg first_tb3_x_pos)"/>
+    <arg name="initial_pose_y"    value="$(arg first_tb3_y_pos)"/>
+    <arg name="initial_pose_a"    value="$(arg first_tb3_yaw)"/>
+  </include>
+
+  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+    <arg name="multi_robot_name"  value="$(arg second_tb3)"/>
+    <arg name="initial_pose_x"    value="$(arg second_tb3_x_pos)"/>
+    <arg name="initial_pose_y"    value="$(arg second_tb3_y_pos)"/>
+    <arg name="initial_pose_a"    value="$(arg second_tb3_yaw)"/>
+  </include>
+
+  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+    <arg name="multi_robot_name"  value="$(arg third_tb3)"/>
+    <arg name="initial_pose_x"    value="$(arg third_tb3_x_pos)"/>
+    <arg name="initial_pose_y"    value="$(arg third_tb3_y_pos)"/>
+    <arg name="initial_pose_a"    value="$(arg third_tb3_yaw)"/>
+  </include>
+
+  <!-- Launch move_base -->
+  <include file="$(find basic_swarm)/launch/swarm_move_base.launch">
+    <arg name="multi_robot_name" value="tb3_0" />
+  </include>
+
+  <include file="$(find basic_swarm)/launch/swarm_move_base.launch">
+    <arg name="multi_robot_name" value="tb3_1" />
+  </include>
+
+  <include file="$(find basic_swarm)/launch/swarm_move_base.launch">
+    <arg name="multi_robot_name" value="tb3_2" />
+  </include>
+
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find basic_swarm)/rviz/swarm.rviz"/>
+  </group>
+
+</launch>
