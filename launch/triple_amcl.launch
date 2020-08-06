@@ -29,21 +29,21 @@
   <node pkg="map_server" name="map_server" type="map_server" args="$(find basic_swarm)/maps/$(arg map_name).yaml"/>
 
   <!-- Launch AMCL -->
-  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+  <include file="$(find basic_swarm)/launch/swarm_amcl_ns.launch">
     <arg name="multi_robot_name"  value="$(arg first_tb3)"/>
     <arg name="initial_pose_x"    value="$(arg first_tb3_x_pos)"/>
     <arg name="initial_pose_y"    value="$(arg first_tb3_y_pos)"/>
     <arg name="initial_pose_a"    value="$(arg first_tb3_yaw)"/>
   </include>
 
-  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+  <include file="$(find basic_swarm)/launch/swarm_amcl_ns.launch">
     <arg name="multi_robot_name"  value="$(arg second_tb3)"/>
     <arg name="initial_pose_x"    value="$(arg second_tb3_x_pos)"/>
     <arg name="initial_pose_y"    value="$(arg second_tb3_y_pos)"/>
     <arg name="initial_pose_a"    value="$(arg second_tb3_yaw)"/>
   </include>
 
-  <include file="$(find basic_swarm)/launch/swarm_amcl.launch">
+  <include file="$(find basic_swarm)/launch/swarm_amcl_ns.launch">
     <arg name="multi_robot_name"  value="$(arg third_tb3)"/>
     <arg name="initial_pose_x"    value="$(arg third_tb3_x_pos)"/>
     <arg name="initial_pose_y"    value="$(arg third_tb3_y_pos)"/>
