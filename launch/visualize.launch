@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz"
+        args="-d $(find basic_swarm)/rviz/swarm.rviz"/>
+</launch>
