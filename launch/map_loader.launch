@@ -1,4 +1,5 @@
 <launch>
+  <!-- LAUNCH A GAZEBO WORLD WITH 3 TURTLEBOTS -->
 
   <!-- Turtlebot Names -->
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
